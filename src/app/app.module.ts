@@ -1,3 +1,4 @@
+import {  HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './components/signup/signup.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -23,6 +24,7 @@ import { AdminAuthGuard } from './service/admin-auth-guard.service';
 import { AuthGuard } from './service/auth-guard.service';
 import { AuthService } from './service/auth.service';
 import { LoginComponent } from './components/login/login.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,8 @@ import { LoginComponent } from './components/login/login.component';
       {path: 'signup', component: SignupComponent}
     ]),
     NgbModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [AuthService, AuthGuard, AdminAuthGuard],
   bootstrap: [AppComponent],
