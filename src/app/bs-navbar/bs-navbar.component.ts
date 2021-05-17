@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../service/auth.service';
+
 
 
 
@@ -10,10 +10,10 @@ import { AuthService } from '../service/auth.service';
 })
 export class BsNavbarComponent {
 
-  constructor(public auth: AuthService) {
+  constructor() {
   }
 
   logout(): void {
-    this.auth.logout();
+    //this.auth.logout();
   }
 }

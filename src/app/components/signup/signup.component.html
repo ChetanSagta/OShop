@@ -1,47 +1,59 @@
+<div *ngIf="loading" class="center spinner-border" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
 <div class="container">
   <main>
     <div class="row g-5">
       <div class="col-md-7 col-lg-8">
-        <form class="needs-validation" #signUpForm="ngForm" (ngSubmit)="onSubmit(signUpForm)">
+        <form class="needs-validation" #signupform="ngForm" (ngSubmit)="onSubmit(signupform)">
           <div class="row g-3">
             <div class="col-sm-6">
               <label for="username" class="form-label">Username</label>
-              <input type="text" class="form-control" name="username" id="username"  required ngModel>
-              <div class="invalid-feedback">
-               Username is required
+              <input type="text" class="form-control" name="username" id="username" required ngModel #user="ngModel">
+              <div *ngIf="user.touched && user.value==''" class="alert alert-danger">
+                Username is required
               </div>
             </div>
 
             <div class="col-sm-6">
               <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" name="email" id="email" placeholder="you@example.com" required ngModel>
-              <div class="invalid-feedback">
-                Valid email is required.
+              <input type="email" class="form-control" name="email" id="email" placeholder="you@example.com" required
+                ngModel #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{3,4}$">
+              <div *ngIf="email.touched && email.value==''" class="alert alert-danger">
+                Email cannot be empty
+              </div>
+              <div *ngIf="email.touched && email.invalid && email.value!=''" class="alert alert-danger">
+                Valid email is required
               </div>
             </div>
 
             <div class="col-12">
               <label for="password" class="form-label">Password</label>
               <div class="input-group has-validation">
-                <input type="text" class="form-control" name="password" id="password" required ngModel>
-              <div class="invalid-feedback">
-                  Password cannot be empty
-                </div>
+                <input type="password" class="form-control" name="password" id="password" required ngModel #pass="ngModel">
+              </div>
+              <div *ngIf="pass.touched && pass.value==''" class="alert alert-danger">
+                Password cannot be empty
               </div>
             </div>
 
             <div class="col-12">
               <label for="confirm password" class="form-label">Confirm Password</label>
-              <input type="text" class="form-control" name="confirm-password" id="confirm-password"  required ngModel>
-              <div class="invalid-feedback">
-                Password cannot be empty
+              <input type="password" class="form-control" name="confirm-password" id="confirm-password" required ngModel
+                #confirm="ngModel">
+              <div *ngIf="confirm.touched && confirm.value==''" class="alert alert-danger">
+                Confirm Password cannot be empty
+              </div>
+              <div *ngIf="confirm.touched && pass.touched && confirm.value!=pass.value" class="alert alert-danger">
+                Both Passwords Should be the same
               </div>
             </div>
           </div>
 
           <hr class="my-4">
 
-          <button class="w-100 btn btn-primary btn-lg" type="submit">SIGN UP</button>
+          <button class="w-100 btn btn-primary btn-lg" type="submit" [disabled]="signupform.invalid">SIGN
+            UP</button>
         </form>
       </div>
     </div>

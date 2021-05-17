@@ -1,3 +1,9 @@
-ng-template{
-  align-content: right;
+html,body{
+  display:flex;
+  height:100%;
+}
+.center{
+  position: relative;
+  top:50%;
+  left:50%; 
 }

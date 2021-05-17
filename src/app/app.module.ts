@@ -20,9 +20,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { MyOrdersComponent } from './components/my-orders/my-orders.component';
 import { HomeComponent } from './components/home/home.component';
-import { AdminAuthGuard } from './service/admin-auth-guard.service';
-import { AuthGuard } from './service/auth-guard.service';
-import { AuthService } from './service/auth.service';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule } from '@angular/forms';
 
@@ -53,19 +50,19 @@ import { FormsModule } from '@angular/forms';
       { path: 'shopping-cart', component: ShoppingCartComponent },
       { path: 'login', component: LoginComponent },
 
-      { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
-      { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard]  },
-      { path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard]  },
+      // { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
+      // { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard]  },
+      // { path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard]  },
 
-      { path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuard, AdminAuthGuard]  },
-      { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminAuthGuard]  },
-      {path: 'signup', component: SignupComponent}
+      // { path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuard, AdminAuthGuard]  },
+      // { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminAuthGuard]  },
+      // {path: 'signup', component: SignupComponent}
     ]),
     NgbModule,
     HttpClientModule,
     FormsModule
   ],
-  providers: [AuthService, AuthGuard, AdminAuthGuard],
+  // providers: [AuthService, AuthGuard, AdminAuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
