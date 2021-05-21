@@ -1,6 +1,12 @@
 <div *ngIf="loading" class="center spinner-border" role="status">
   <span class="sr-only">Loading...</span>
 </div>
+<div *ngIf="errorMessage && errorMessage.length > 0 && responseMessage.length ==0 " class="alert alert-danger" role="alert">
+  {{errorMessage}}
+</div>
+<div *ngIf="responseMessage.length > 0" class="alert alert-success" role="alert">
+  {{responseMessage}}
+</div>
 <div class="container">
   <main>
     <div class="row g-5">
@@ -30,20 +36,26 @@
             <div class="col-12">
               <label for="password" class="form-label">Password</label>
               <div class="input-group has-validation">
-                <input type="password" class="form-control" name="password" id="password" required ngModel #pass="ngModel">
+                <input type="password" class="form-control" name="password" id="password" minlength="8" maxlength="16" 
+                required ngModel #pass="ngModel">
               </div>
               <div *ngIf="pass.touched && pass.value==''" class="alert alert-danger">
                 Password cannot be empty
+              </div>
+              <div *ngIf="!pass.valid && pass.value!=''" class="alert alert-danger">Password length should be between 8 and 16
               </div>
             </div>
 
             <div class="col-12">
               <label for="confirm password" class="form-label">Confirm Password</label>
-              <input type="password" class="form-control" name="confirm-password" id="confirm-password" required ngModel
-                #confirm="ngModel">
+              <input type="password" class="form-control" name="confirm-password" id="confirm-password" minlength="8" maxlength="16" 
+              required ngModel #confirm="ngModel">
               <div *ngIf="confirm.touched && confirm.value==''" class="alert alert-danger">
                 Confirm Password cannot be empty
               </div>
+              <div *ngIf="!confirm.valid && confirm.value!=''" class="alert alert-danger">Password length should be between 8 and 16
+              </div>
+              
               <div *ngIf="confirm.touched && pass.touched && confirm.value!=pass.value" class="alert alert-danger">
                 Both Passwords Should be the same
               </div>
@@ -52,7 +64,7 @@
 
           <hr class="my-4">
 
-          <button class="w-100 btn btn-primary btn-lg" type="submit" [disabled]="signupform.invalid">SIGN
+          <button class="w-100 btn btn-primary btn-lg" type="submit" [disabled]="signupform.invalid || pass.value!=confirm.value">SIGN
             UP</button>
         </form>
       </div>

@@ -12,19 +12,21 @@ import { finalize } from 'rxjs/operators';
 export class LoginComponent {
 
   loading = false;
+  response : Object | undefined;
 
   headers = new HttpHeaders();
   constructor(private http: HttpClient) {
   }
 
-  onSubmit(loginForm: NgForm){
+  onSubmit(loginForm: NgForm): void{
     console.log(loginForm.value);
     this.loading = true;
-    this.headers.append('Content-Type', 'application/text');
-    this.http.post("http://localhost:8080/api/login",loginForm.value,{headers: this.headers})
+    this.headers.append('Content-Type', 'application/json');
+    this.http.post("http://localhost:8080/api/login", loginForm.value, {headers: this.headers})
     .pipe(finalize(() => this.loading = false))
-    .subscribe(response => console.log(response));
-  
+    .subscribe(response => {
+      if(response)
+        this.response = response;
+      console.log(response)});
   }
-
 }

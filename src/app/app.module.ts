@@ -56,7 +56,7 @@ import { FormsModule } from '@angular/forms';
 
       // { path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuard, AdminAuthGuard]  },
       // { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminAuthGuard]  },
-      // {path: 'signup', component: SignupComponent}
+      {path: 'signup', component: SignupComponent}
     ]),
     NgbModule,
     HttpClientModule,
