@@ -1,4 +1,3 @@
-import { Messages } from './../../models/Messages';
 import { HttpClient, HttpErrorResponse, HttpResponse, HttpHeaders } from '@angular/common/http';
 import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormControl, NgForm} from '@angular/forms';
@@ -12,12 +11,12 @@ export class SignupComponent {
     responseMessage = '';
     constructor(private http: HttpClient) {}
 
-    httpOptions = {
-        headers: new HttpHeaders({
-          'Content-Type':  'application/json',
-          'Access-Control-Allow-Origin':'*',
-        })
-      };
+    // httpOptions = {
+    //     headers: new HttpHeaders({
+    //       'Content-Type':  'application/json',
+    //       'Access-Control-Allow-Origin':'*',
+    //     })
+    //   };
 
     onSubmit(contactForm: NgForm): void {
         this.loading = true;

@@ -1,10 +1,8 @@
 <div *ngIf="loading" class="center spinner-border" role="status">
     <span class="sr-only">Loading...</span>
 </div>
-<div *ngIf="response" class="alert alert-danger" role="alert">
-    {{errorMessage}}
-  </div>
-<form class="col-10 mx-auto col-lg-5 p-5 bg-light" (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
+
+<form class="col-10 mx-autong s col-lg-5 p-5 bg-light" (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
     <div class="form-floating mb-3" class="form-group">
         <input type="text" class="form-control" id="floatingInput" name="username" required
             ngModel #username="ngModel">

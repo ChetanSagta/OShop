@@ -1,0 +1,40 @@
+.title {
+   font-size: 20px;
+   word-wrap: normal;
+}
+
+.price {
+   font-size : 20px;
+   font-weight: bold;   
+}
+
+.category {
+    font-size : 20px;
+}
+
+.img {
+    position: relative;
+}
+
+.product{
+    float: left;
+    border: 10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: red;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    /* background-color: #2196F3; */
+    padding: 10px;
+}
+
+.grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+  }
