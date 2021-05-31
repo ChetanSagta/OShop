@@ -1,9 +1,19 @@
 <div class="container">
     <div class="grid-container">
         <div class="grid-item" *ngFor="let product of productBody">
-            <img src='{{product.image}}' height="200" width="200" class="img"><br>
-            <div class="title"><strong>{{product.title}}</strong></div>
-            <div class="category">Category: {{product.category}} </div>          
-            <div class="price">Price: {{product.price}} Rupees</div>
+            <a [routerLink]="[ '/product']"><img src='{{product.image}}' height="200" width="200" class="img" 
+                (click)="selectLink(product)"></a><br>
+            <a [routerLink]="[ '/product']">
+                <div class="title" (click)="selectLink(product)">
+                    <strong>{{product.title}}</strong>
+                </div>
+            </a>
+            <div class="category">
+                {{product.category}}
+            </div>
+            <div class="price">Price:
+                {{product.price}}
+                Rupees</div>
+        </div>
     </div>
 </div>

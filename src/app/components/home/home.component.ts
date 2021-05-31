@@ -1,6 +1,8 @@
-import { Products } from './../../models/Products';
+import { DataTransferService } from './../../service/dataTransferService';
+import { Product } from '../../models/Product';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'home',
@@ -9,9 +11,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  productBody ?: Products[];
+  productBody ?: Product[];
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private router: Router,private dts: DataTransferService<Product>) { }
 
   ngOnInit(): void {
 
@@ -24,12 +26,16 @@ export class HomeComponent implements OnInit {
     headers: httpHeaders,
 
   };
-    this.http.get<Products[]>("http://localhost:8080/api/products/getAll",requestOptions)
+    this.http.get<Product[]>("http://localhost:8080/api/products/getAll",requestOptions)
     .subscribe(response => {
         this.productBody = response;
         console.log(response);
     });
 
+  }
+
+  selectLink(product: Product){
+    this.dts.setContent(product);
   }
 
 }
