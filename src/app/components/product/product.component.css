@@ -1,12 +1,41 @@
 .card{
-    margin: auto;
-    width: 40%;
-    border: 3px solid black;
+    margin-left: 30%;
+    width: 30%;
     padding: 10px;
+    float: left;
 }
 
-.btn-primary{
-    margin-left: 30%;
-    width: 50%;
-    padding: 10px;  
+.align-right{
+    /* margin-left: 30%; */
+    width: 30%;
+    padding: 10px;
+    float: right; 
+    margin-top: 10%;
+}
+
+.count-text{
+    width: 150px;
+    border: solid rgb(10, 98, 214) 5px;
+    border-radius: 4px;
+    margin: 10px;
+    text-align: center;
+}
+
+.count-button{
+    width: 15%;
+    font-weight: bolder;
+    font-size: 20px;
+    text-align: center;
+}
+
+.price-button{
+    width: 85%;
+    text-align: center;
+}
+
+.product-image{
+    height: 30%;
+    width: 30%;
+    float: left;
+    margin-left: 10%;
 }

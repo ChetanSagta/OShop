@@ -1,8 +1,12 @@
-<div class="card" >
-    <img src='{{this.currentProduct?.image}}' class="card-img-top" alt="IMAGE" height="300px">
-    <div class="card-body">
-      <h5 class="card-title"><strong>{{this.currentProduct?.title}}</strong></h5>
+<div>
+    <img src='{{this.currentProduct?.image}}' alt="IMAGE" class="product-image">
+</div>
+  <div class="align-right">
+    <h5 class="card-title"><strong>{{this.currentProduct?.title}}</strong></h5>
       <p class="card-text"> {{this.currentProduct?.description}}</p>
-      <a href="#" class="btn btn-primary">Price: {{this.currentProduct?.price}} Rupees</a>
-    </div>
-  </div>
+  <a href="#" class="btn btn-primary price-button">Price: {{this.currentProduct?.price}} Rupees</a><br>
+  <button class="btn btn-primary count-button" (click)=addProduct(-1)>-</button>
+  <input type="number" class="count-text" value={{quantity}} disabled/>
+  <button class="btn btn-primary count-button" (click)=addProduct(1)>+</button>
+  <a class="btn btn-primary price-button">Add To Cart</a><br>
+</div>
