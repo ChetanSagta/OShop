@@ -54,16 +54,13 @@
                 Confirm Password cannot be empty
               </div>
               <div *ngIf="!confirm.valid && confirm.value!=''" class="alert alert-danger">Password length should be between 8 and 16
-              </div>
-              
+              </div>              
               <div *ngIf="confirm.touched && pass.touched && confirm.value!=pass.value" class="alert alert-danger">
                 Both Passwords Should be the same
               </div>
             </div>
           </div>
-
           <hr class="my-4">
-
           <button class="w-100 btn btn-primary btn-lg" type="submit" [disabled]="signupform.invalid || pass.value!=confirm.value">SIGN
             UP</button>
         </form>

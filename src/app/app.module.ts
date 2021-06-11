@@ -9,7 +9,6 @@ import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from 'src/environments/environment';
-import { ProductsComponent } from './components/products/products.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { OrderSuccessComponent } from './components/order-success/order-success.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
@@ -29,7 +28,6 @@ import { ProductComponent } from './components/product/product.component';
     AppComponent,
     BsNavbarComponent,
     HomeComponent,
-    ProductsComponent,
     ShoppingCartComponent,
     CheckoutComponent,
     OrderSuccessComponent,
@@ -48,17 +46,16 @@ import { ProductComponent } from './components/product/product.component';
     AngularFireAuthModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
-      { path: 'products', component: ProductsComponent },
       { path: 'shopping-cart', component: ShoppingCartComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'product', component: ProductComponent},
+      { path: 'product/:productName', component: ProductComponent},
 
-      // { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
-      // { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard]  },
-      // { path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard]  },
+      { path: 'checkout', component: CheckoutComponent},
+      { path: 'my/orders', component: MyOrdersComponent},
+      { path: 'order-success', component: OrderSuccessComponent},
 
-      // { path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuard, AdminAuthGuard]  },
-      // { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminAuthGuard]  },
+      { path: 'admin/products', component: AdminProductsComponent},
+      { path: 'admin/orders', component: AdminOrdersComponent},
       {path: 'signup', component: SignupComponent}
     ]),
     NgbModule,

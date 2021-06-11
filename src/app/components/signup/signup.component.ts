@@ -11,22 +11,16 @@ export class SignupComponent {
     responseMessage = '';
     constructor(private http: HttpClient) {}
 
-    // httpOptions = {
-    //     headers: new HttpHeaders({
-    //       'Content-Type':  'application/json',
-    //       'Access-Control-Allow-Origin':'*',
-    //     })
-    //   };
 
     onSubmit(contactForm: NgForm): void {
         this.loading = true;
         // console.log(contactForm.value);
 
-        this.http.post('http://localhost:8080/api/signup', contactForm.value,{responseType: 'text'})
+        this.http.post('http://localhost:8080/api/signup', contactForm.value, {responseType: 'text'})
         .pipe(finalize(() => this.loading = false))
         .subscribe((response) => {
            this.responseMessage = response.toString();
-           //console.log("Response: " + response)
+           contactForm.reset();
          },
             (error: HttpErrorResponse) => {
                 if (error) {

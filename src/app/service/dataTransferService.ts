@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable(
@@ -8,12 +8,12 @@ import { Observable } from 'rxjs';
 export class DataTransferService<T>{
 
 
-    private content ?: T ; 
+    private content ?: T ;
 
-    constructor(private http:HttpClient){
+    constructor(private http: HttpClient){
     }
 
-    setContent(content : T){
+    setContent(content: T): void{
         this.content = content;
     }
 

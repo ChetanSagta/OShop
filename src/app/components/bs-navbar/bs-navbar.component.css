@@ -1,15 +1,14 @@
-/* .dropdown-toggle{
+.dropdown-toggle{
   cursor: pointer;
 }
-
-#navbarsExampleDefault{
-  font-weight:bold;
-} */
 
 .navbar-nav{
   position: absolute;
   right: 0px;
   text-decoration: underline;
   font-weight: bold;
-  color:black
+}
+
+.nav-item{
+  color: navy;
 }

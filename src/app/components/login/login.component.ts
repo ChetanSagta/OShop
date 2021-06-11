@@ -12,30 +12,25 @@ export class LoginComponent {
     response ?: string;
     responseHeaders ?: string;
     authorizationToken ?: string|null;
-    // httpHeaders = new HttpHeaders(
-    //   {'Content-Type':'application/json',
-    //   'Access-Control-Allow-Origin':'*'});
-    // options = {
-    //     headers: this.httpHeaders
-    // };
-    constructor(private http : HttpClient, private route: Router) {}
 
-    onSubmit(loginForm : NgForm): void {
+    constructor(private http: HttpClient, private route: Router) {}
+
+    onSubmit(loginForm: NgForm): void {
         console.log(loginForm.value);
         this.loading = true;
-        this.http.post<Response>("http://localhost:8080/api/login", loginForm.value, {observe: 'response'})
+        this.http.post('http://localhost:8080/api/login', loginForm.value, {observe: 'response'})
         .pipe(finalize(() => this.loading = false)).subscribe((response) => {
             if (response) {
                 this.response = JSON.stringify(response.body);
-                this.authorizationToken = response.headers.get("authorization");
-                if(this.authorizationToken){
-                      localStorage.setItem("AuthorizationToken",this.authorizationToken);
-                      this.route.navigate(['/home']);
+                this.authorizationToken = response.headers.get('authorization');
+                if (this.authorizationToken){
+                      localStorage.setItem('AuthorizationToken', this.authorizationToken);
+                      localStorage.setItem('User', this.response);
+                      this.route.navigate(['/']).then(() => window.location.reload());
                 }
-                  
             }
-        }, (errors : HttpErrorResponse) => {
-            console.log("Error: " + JSON.stringify(errors))
+        }, (errors: HttpErrorResponse) => {
+            console.log('Error: ' + JSON.stringify(errors));
         });
     }
 }

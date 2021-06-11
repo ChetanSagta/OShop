@@ -6,10 +6,19 @@ import { Component } from '@angular/core';
 })
 export class BsNavbarComponent {
 
+  userLoggedin = false;
+  currentUser = '';
+
   constructor() {
+    const userData = localStorage.getItem('User');
+    if (userData){
+      this.userLoggedin = true;
+      this.currentUser = JSON.parse(userData).username;
+    }
   }
 
   logout(): void {
-    //this.auth.logout();
+    localStorage.clear();
+    window.location.reload();
   }
 }
