@@ -1,8 +1,8 @@
 import {NgForm} from '@angular/forms';
 import {Component} from '@angular/core';
-import {HttpHeaders, HttpClient, HttpErrorResponse, HttpResponse} from '@angular/common/http';
-import {finalize} from 'rxjs/operators';
-import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {finalize} from 'rxjs/operators'
+import { Router } from '@angular/router';
 
 
 @Component({selector: 'login', templateUrl: './login.component.html', styleUrls: ['./login.component.css']})

@@ -2,13 +2,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './components/signup/signup.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireAuthModule } from '@angular/fire/auth';
 import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
-import { environment } from 'src/environments/environment';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { OrderSuccessComponent } from './components/order-success/order-success.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
@@ -22,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 import { BsNavbarComponent } from './components/bs-navbar/bs-navbar.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ProductComponent } from './components/product/product.component';
+import { ToastComponent } from './components/toast/toast.component';
 
 @NgModule({
   declarations: [
@@ -36,14 +33,12 @@ import { ProductComponent } from './components/product/product.component';
     AdminOrdersComponent,
     LoginComponent,
     SignupComponent,
-    ProductComponent
+    ProductComponent,
+    ToastComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
-    AngularFireAuthModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'shopping-cart', component: ShoppingCartComponent },
