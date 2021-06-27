@@ -1,1 +1,16 @@
-<p>shopping-cart works!</p>
+<div *ngIf="shoppingItems?.length == 0;else elseTemplate ">
+    No Items In The Shopping Cart
+</div>
+<ng-template #elseTemplate>
+    <div class="container">
+        <div class="grid-container">
+            <div class="grid-item" *ngFor="let shoppingItem of shoppingItems">
+                <div class="total"><strong>Rs.{{shoppingItem.product.price * shoppingItem.quantity}}</strong></div>
+                <img src='{{shoppingItem.product.image}}' height="200" width="200" class="img">
+                    <div class= "title">{{shoppingItem.product.title}}</div><br>
+                <span class="quantity"><em>Quantity: {{shoppingItem.quantity}}</em></span>&nbsp;&nbsp;
+                <span class="link" (click)="deleteCartItem(shoppingItem.product)">Delete</span>
+            </div>
+        </div>
+    </div>
+</ng-template>

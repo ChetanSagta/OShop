@@ -1,3 +1,6 @@
+import { AppUser } from './../models/AppUser';
+import { Product } from 'src/app/models/Product';
+import { ShoppingCart } from '../models/ShoppingCart';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -17,11 +20,6 @@ export class CartService{
         .set('Authorization', 'Bearer ' + localStorage.getItem('AuthorizationToken'))
         .set('Access-Control-Allow-Origin', '*');
 
-        const httpOptions = {
-            httpHeaders,
-            responseType: 'text'
-            }
-
         const user = localStorage.getItem('User');
         const body = {productId, quantity, userName: String(JSON.parse(user!).username)};
 
@@ -33,11 +31,31 @@ export class CartService{
 
     }
 
-    removeFromCart(productId: number){
+    showCart(): Observable<ShoppingCart[]>{
+        const httpHeaders = new HttpHeaders()
+        .set('Authorization', 'Bearer ' + localStorage.getItem('AuthorizationToken'))
+        .set('Access-Control-Allow-Origin', '*');
 
+        const user = localStorage.getItem('User');
+        console.log("UserJson : " + user);
+        const userName = String(JSON.parse(user!).username);
+
+        console.log('User: ' + userName);
+
+        return this.http.post<ShoppingCart[]>('http://localhost:8080/api/getCart', userName,
+        {headers : httpHeaders});
     }
 
-    showCart(){
+    deleteItemFromCart(product: Product): Observable<any>{
+        const httpHeaders = new HttpHeaders()
+        .set('Authorization', 'Bearer ' + localStorage.getItem('AuthorizationToken'))
+        .set('Access-Control-Allow-Origin', '*');
+
+        const user = localStorage.getItem('User');
+        const userName = String(JSON.parse(user!).username);
+        const productId = product.productId;
+
+        return this.http.post('http://localhost:8080/api/deleteProductFromCart', {productId, userName}, {headers : httpHeaders});
     }
 
 }
